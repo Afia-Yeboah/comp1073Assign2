@@ -3,7 +3,7 @@ constructor that takes the details of the customer Order */
 class Smoothie {
     constructor({customerName, size, base, fruits, extras}) {
         this.customerName = customerName;
-        this.size - size;
+        this.size = size;
         this.base = base;
         this.fruits = fruits;
         this.extras = extras;
@@ -61,8 +61,10 @@ class Smoothie {
         const extras = [];
         const extraInputs = document.getElementsByName("extras");
         for (let i = 0; i < extraInputs.length; i++) {
-            if (extraInputs[i].cehcked) {
+            if (extraInputs[i].checked) {
                 extras[extras.length] = extraInputs[i].value;
             };
         };
+
+    
     });
