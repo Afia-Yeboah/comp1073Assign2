@@ -25,3 +25,15 @@ class Smoothie {
     // Grab the form element and output the paragraph from the page
     const form = document.getElementById("smoothieForm");
     const output = document.getElementById("orderOutput");
+
+    // Using an event listener to listen for form submission
+    form.addEventListener("submit", function(event){
+        // prevent the page from reloading when customer submits form
+        event.preventDefault();
+
+        // read the customer's selection
+        const customerName = document.getElementById("customerName").value;
+
+        // check and read the size selected by customer
+        const size = form.querySelector(`input[name="size"]:checked`).value;
+    });
