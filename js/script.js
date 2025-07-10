@@ -66,5 +66,9 @@ class Smoothie {
             };
         };
 
-    
+        // Instantiate the order
+        const smoothieOrder = new Smoothie({customerName, size, base, fruits, extras});
+        
+        //render unto page
+        output.textContent = smoothieOrder.describe();
     });
