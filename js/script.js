@@ -12,8 +12,16 @@ class Smoothie {
     // Using the describe function to describe what the order is
     describe() {
         let smoothieOrder = `${this.customerName}, your selction of ${this.size} smoothie with ${this.base}`;
-        if(this.fruits.length) smootheOrder +=` and ${this.fruits.join(', ')}`;
-        if(this.extras.length) smootheOrder +=` plus ${this.extras.join(', ')}`;
+        if(this.fruits.length) {
+            smoothieOrder +=` and ${this.fruits.join(', ')}`;
+        } 
+        if(this.extras.length) {
+            smoothieOrder +=` plus ${this.extras.join(', ')}`;
+        } 
         return smoothieOrder + '.';
     };
-}
+};
+
+    // Grab the form element and output the paragraph from the page
+    const form = document.getElementById("smoothieForm");
+    const output = document.getElementById("orderOutput");
