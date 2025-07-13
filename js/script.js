@@ -11,7 +11,7 @@ class Smoothie {
 
     // Using the describe function to describe what the order is
     describe() {
-        let smoothieOrder = `${this.customerName}, your selction of ${this.size} smoothie with ${this.base}`;
+        let smoothieOrder = `Hey ${this.customerName}!, you selected a ${this.size} smoothie with ${this.base}`;
         if(this.fruits.length) {
             smoothieOrder +=` and ${this.fruits.join(', ')}`;
         } 
@@ -30,6 +30,8 @@ class Smoothie {
     form.addEventListener("submit", function(event){
         // prevent the page from reloading when customer submits form
         event.preventDefault();
+
+        // Inputting Validation eg. ensure customer name is not empty
 
         // read the customer's selection
         const customerName = document.getElementById("customerName").value;
