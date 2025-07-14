@@ -32,77 +32,80 @@ function reset() {
     document.getElementById("fruitsBox").style.border = "";
 };
 
- // read the size that is selected by customer
- const sizeOrdered = document.getElementsByName("size");
- let size = '';
- for (let i = 0; i < sizeOrdered.length; i++) {
-    if (sizeOrdered[i].checked) {
-        size = sizeOrdered[i].value;
-        break;
-    };
-};
 // Using an event listener to listen for form submission
-form.addEventListener("submit", function(event){
+form.addEventListener("submit", function(event) {
 // prevent the page from reloading when customer submits form
     event.preventDefault();
-
+    reset();
 
 // read the customer's selection
-const customerName = document.getElementById("customerName").value;
+const nameInfo = document.getElementById("customerName");
+const customerName = nameInfo.value;
 // Inputting Validation with conditionals - customer field not left empty
 if (customerName.length < 2) {
-    customerName.style.border = "2px solid red";
-    output.textContenr = "Please enter your real name";
+    nameInfo.style.border = "2px solid red";
+    output.textContent = "Please enter your real name";
     output.style.color = "red";
     return;
 }
 
 // reading the smoothie base choice selected
-const base = document.getElementById("base").value;
+const baseSelected = document.getElementById("base");
+const base = baseSelected.value;
 
 // Validate the smoothie base selection
 if (!base) {
-    base.style.border = "2px solid red";
+    baseSelected.style.border = "2px solid red";
     output.textContent = "Please choose a base for your smoothie";
     output.style.color = "red";
     return;
 };
 
-// collect any of the fruits selected
+// Select 3 fruits
 const fruits = [];
-const fruitInputs = document.getElementsByName("fruit");
-for (let i = 0; i < fruitInputs.length; i++) {
-    if (fruitInputs[i].checked) {
+const fruitSelected = document.getElementsByName("fruit");
+for (let i = 0; i < fruitSelected.length; i++) {
+    if (fruitSelected[i].checked) {
         // adding that to the end of the fruits array
-        fruits[fruits.length] = fruitInputs[i].value;
+        fruits[fruits.length] = fruitSelected[i].value;
     };
-}
-
-// Select a max of 3 fruits
+};
 if (fruits.length !== 3) {
-    alert ("Please pick up to 3 fruits!");
+    document.getElementById("fruitsBox").style.border = "2px solid red";
+    output.textContent = "Please select only 3 fruits.";
+    output.style.color = "red";
     return;
-}
+};
+
+// read the size that is selected by customer
+let size = "";
+const sizeOrdered = document.getElementsByName("size");
+for (let i = 0; i < sizeOrdered.length; i++) {
+    if (sizeOrdered[i].checked) {
+        size = sizeOrdered[i].value;
+        break;
+    };
+};
         
 // store the checked extras
 const extras = [];
-const extraInputs = document.getElementsByName("extras");
-for (let i = 0; i < extraInputs.length; i++) {
-    if (extraInputs[i].checked) {
-        extras[extras.length] = extraInputs[i].value;
+const extraInfo = document.getElementsByName("extras");
+for (let i = 0; i < extraInfo.length; i++) {
+    if (extraInfo[i].checked) {
+        extras[extras.length] = extraInfo[i].value;
     };
 };
 
-// Confirm to client with a prompt if they don't select an extra option
-if (extras.length === 0) {
-    // prompt, client can still proceed without adding any extra
-    const ok = confirm(`No extras were chosen- do you want to proceed without?`);
-    if (!ok) return;
-}
-
 // Instantiate the order
 const smoothieOrder = new Smoothie({customerName, size, base, fruits, extras});
-
 //render unto page
 output.textContent = smoothieOrder.describe();
+output.style.color = "";
 });
+
+// function to handle the reset button
+resetBtn.addEventListener("click", function() {
+    reset(); 
+    form.reset(); // reset all form fields
+});
+
