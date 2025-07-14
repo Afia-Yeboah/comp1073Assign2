@@ -30,77 +30,79 @@ function reset() {
     document.getElementById("customerName").style.border = "";
     document.getElementById("base").style.border = "";
     document.getElementById("fruitsBox").style.border = "";
+};
+
+ // read the size that is selected by customer
+ const sizeOrdered = document.getElementsByName("size");
+ let size = '';
+ for (let i = 0; i < sizeOrdered.length; i++) {
+    if (sizeOrdered[i].checked) {
+        size = sizeOrdered[i].value;
+        break;
+    };
+};
+// Using an event listener to listen for form submission
+form.addEventListener("submit", function(event){
+// prevent the page from reloading when customer submits form
+    event.preventDefault();
+
+
+// read the customer's selection
+const customerName = document.getElementById("customerName").value;
+// Inputting Validation with conditionals - customer field not left empty
+if (customerName.length < 2) {
+    customerName.style.border = "2px solid red";
+    output.textContenr = "Please enter your real name";
+    output.style.color = "red";
+    return;
 }
-    // Using an event listener to listen for form submission
-    form.addEventListener("submit", function(event){
-        // prevent the page from reloading when customer submits form
-        event.preventDefault();
 
+// reading the smoothie base choice selected
+const base = document.getElementById("base").value;
 
-        // read the customer's selection
-        const customerName = document.getElementById("customerName").value;
+// Validate the smoothie base selection
+if (!base) {
+    base.style.border = "2px solid red";
+    output.textContent = "Please choose a base for your smoothie";
+    output.style.color = "red";
+    return;
+};
 
-        // Inputting Validation with conditionals eg. ensure customer name is not empty
-        if (customerName.length < 2) {
-            alert ("Please enter your real name");
-            return;
-        }
+// collect any of the fruits selected
+const fruits = [];
+const fruitInputs = document.getElementsByName("fruit");
+for (let i = 0; i < fruitInputs.length; i++) {
+    if (fruitInputs[i].checked) {
+        // adding that to the end of the fruits array
+        fruits[fruits.length] = fruitInputs[i].value;
+    };
+}
 
-        // read the size that is selected by customer
-        const sizeInputs = document.getElementsByName("size");
-        let size = '';
-        for (let i = 0; i < sizeInputs.length; i++) {
-            if (sizeInputs[i].checked) {
-                size = sizeInputs[i].value;
-                break;
-            };
-        };
-
-
-        // reading the smoothie base choice selected
-        const base = document.getElementById("base").value;
-
-        // Validate the smoothie base selection
-        if (!base) {
-            alert("Please select a base for your smoothie");
-            return;
-        };
-
-        // collect any of the fruits selected
-        const fruits = [];
-        const fruitInputs = document.getElementsByName("fruit");
-        for (let i = 0; i < fruitInputs.length; i++) {
-            if (fruitInputs[i].checked) {
-                // adding that to the end of the fruits array
-                fruits[fruits.length] = fruitInputs[i].value;
-            };
-        }
+// Select a max of 3 fruits
+if (fruits.length !== 3) {
+    alert ("Please pick up to 3 fruits!");
+    return;
+}
         
-        // Select a max of 3 fruits
-        if (fruits.length !== 3) {
-            alert ("Please pick up to 3 fruits!");
-            return;
-        }
-                
-        // store the checked extras
-        const extras = [];
-        const extraInputs = document.getElementsByName("extras");
-        for (let i = 0; i < extraInputs.length; i++) {
-            if (extraInputs[i].checked) {
-                extras[extras.length] = extraInputs[i].value;
-            };
-        };
+// store the checked extras
+const extras = [];
+const extraInputs = document.getElementsByName("extras");
+for (let i = 0; i < extraInputs.length; i++) {
+    if (extraInputs[i].checked) {
+        extras[extras.length] = extraInputs[i].value;
+    };
+};
 
-        // Confirm to client with a prompt if they don't select an extra option
-        if (extras.length === 0) {
-            // prompt, client can still proceed without adding any extra
-            const ok = confirm(`No extras were chosen- do you want to proceed without?`);
-            if (!ok) return;
-        }
+// Confirm to client with a prompt if they don't select an extra option
+if (extras.length === 0) {
+    // prompt, client can still proceed without adding any extra
+    const ok = confirm(`No extras were chosen- do you want to proceed without?`);
+    if (!ok) return;
+}
 
-        // Instantiate the order
-        const smoothieOrder = new Smoothie({customerName, size, base, fruits, extras});
-        
-        //render unto page
-        output.textContent = smoothieOrder.describe();
-    });
+// Instantiate the order
+const smoothieOrder = new Smoothie({customerName, size, base, fruits, extras});
+
+//render unto page
+output.textContent = smoothieOrder.describe();
+});
