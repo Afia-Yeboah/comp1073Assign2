@@ -1,3 +1,8 @@
+// Grab the form element and output, and reset button from the page
+    const form = document.getElementById("smoothieForm");
+    const output = document.getElementById("orderOutput");
+    const resetBtn = document.getElementById("resetBtn");
+
 /* Defining the Smoothie class for the order and creating the following
 constructor that takes the details of the customer Order */
 class Smoothie {
@@ -11,21 +16,21 @@ class Smoothie {
 
     // Using the describe function to describe what the order is
     describe() {
-        let smoothieOrder = `Hey ${this.customerName}!, you selected a ${this.size} smoothie with ${this.base}`;
-        if(this.fruits.length) {
-            smoothieOrder +=` and ${this.fruits.join(', ')}`;
-        } 
-        if(this.extras.length) {
-            smoothieOrder +=` plus ${this.extras.join(', ')}`;
-        } 
+        let smoothieOrder = `Hey ${this.customerName}!, your ${this.size} smoothie with ${this.base}`;
+        if(this.fruits.length > 0) smoothieOrder +=` and ${this.fruits.join(', ')}`;
+        if(this.extras.length > 0) smoothieOrder +=` plus ${this.extras.join(', ')}`;
         return smoothieOrder + '.';
     };
 };
 
-    // Grab the form element and output the paragraph from the page
-    const form = document.getElementById("smoothieForm");
-    const output = document.getElementById("orderOutput");
-
+// set reset function 
+function reset() {
+    output.textContent = "";
+    output.style.color = "";
+    document.getElementById("customerName").style.border = "";
+    document.getElementById("base").style.border = "";
+    document.getElementById("fruitsBox").style.border = "";
+}
     // Using an event listener to listen for form submission
     form.addEventListener("submit", function(event){
         // prevent the page from reloading when customer submits form

@@ -15,7 +15,7 @@
          <!-- Customer name using input -->
         <div class="form-group">
             <label for="customerName">Customer Name:</label>
-            <input type="text" id="customerName" name="customerName" placeholder="e.g. Afia">
+            <input type="text" id="customerName" name="customerName" placeholder="e.g. Afia" required>
         </div>
         <!-- Creating different size selection for clients to select to choose from small, medium, large -->
          <fieldset class="form-group">
@@ -35,9 +35,11 @@
                 <option value="Orange Juice">Orange Juice</option>
             </select>
         </div>
-        <!-- Creating the Fruit toppings Checkboxes: Clients can select as many as they like -->
-         <fieldset class="form-group">
-            <legend>Fruits</legend>
+
+        <!-- Creating the Fruit toppings Checkboxes: Clients can select as many as they like 
+            Adding class id for easier styling-->
+         <fieldset id="fruitsBox" class="form-group">
+            <legend>Select up to 3 Fruits</legend>
             <label><input type="checkbox" name="fruit" value="Banana"> Banana</label>
             <label><input type="checkbox" name="fruit" value="Strawberry"> Strawberry</label>
             <label><input type="checkbox" name="fruit" value="Mango"> Mango</label>
@@ -45,17 +47,20 @@
             <label><input type="checkbox" name="fruit" value="Peach"> Peach</label>
             <label><input type="checkbox" name="fruit" value="Rasberry"> Raspberry</label>
         </fieldset>
+
         <!-- Extra options for the healthy ones -->
         <fieldset class="form-group">
-            <legend>Extras</legend>
+            <legend>Extras (Optional)</legend>
             <label><input type="checkbox" name="extras" value="Protein Powder">Protein Powder</label>
             <label><input type="checkbox" name="extras" value="Honey">Honey</label>
             <label><input type="checkbox" name="extras" value="Chia Seeds">Chia Seeds</label>
             <label><input type="checkbox" name="extras" value="Avocado">Avocado</label>
             <label><input type="checkbox" name="extras" value="Peanut Butter">Peanut Butter</label>
         </fieldset>
-        <!-- Press Button to place order -->
+        
+        <!-- Press Button to place order and Reset-->
          <button type="submit">Order Smoothie</button>
+         <button type="button" id="resetBtn">Reset</button>
      </form>
      <!-- Output the final smoothie order inside a paragraph -->
       <p id="orderOutput"></p>
