@@ -1,28 +1,74 @@
-/* Global page styling */
+:root {
+  --pink:       #da6a8a;
+  --light-bg:   #ffeff7;
+  --blue-main:  #2b8ab3;
+  --blue-mid:   #396591;
+  --dark-text:  #051425;
+  --highlight:  #d4750f;
+  --white:      #fff;
+  --shadow:     rgba(0,0,0,0.8);
+}
 * {
     box-sizing: border-box;
     margin:0;
     padding:0;
 }
+
+/* Styling the banner */
+.hero {
+    position: relative;
+    margin: -2rem 0 1.5rem;
+    padding: 3rem 2rem;
+    background: url("../images/Smoothie-default.jpg") center/cover no-repeat;
+    text-align: center;
+}
+
+/* to make the text inside the banner more visible */
+.hero::before {
+    content:"";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 0;
+}
+
+.hero h1, .hero p {
+    position: relative;
+    z-index: 1;
+    text-shadow: 2 4px 8px rgba(0,0,0,0.8);
+}
+
+.layout {
+    margin: 0 auto;
+    max-width: 1000px;
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
 body {
     font-family: Georgia, serif;
-    background: #ffeff7;
-    color: #333;
+    background: var(--light-bg);
+    color: var(--dark-text);
     padding: 2rem;
+    line-height: 1.5;
 }
 
 /* Main Heasing Styling */
 h1 {
     text-align: center;
-    color: #da6a8a ; 
-    margin-bottom: 0.5rem;
+    color: var(--pink) ; 
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 2px var(--shadow);
 }
 
 /* output under the heading */
 p {
     text-align: center;
     margin-bottom: 2rem;
-    color: #555;
+    color: var(--white);
+    font-weight: bold;
 }
 
 /* displaying layout on the left, output on the right */
@@ -34,43 +80,55 @@ p {
     flex-wrap: wrap;
 }
 
+.layout > form {
+    flex: 2;
+    min-width: 300px;
+}
+
+.layout > .sidebar {
+    flex: 1;
+    min-width: 250px;
+}
+
 /* Making the form into a container */
 #smoothieForm {
-    flex: 1;
-    background: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    background: var(--blue-main);
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0, 0.4);
-    padding: 1.5rem;
+    padding: 2rem;
 }
 
 .sidebar {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 /* Styling the field-group */
 .form-group, fieldset {
     margin-bottom: 1.5rem;
-    padding: 1rem;
+    padding:1rem;
     border: 2px solid #c3e9f4;
     border-radius: 8px;
-    background: #f7fbff;
+    background: var(--blue-mid);
 }
 
 /* Styling all legends */
-fieldset legend {
+fieldset legend,
+.form-group > label {
     padding: 0 0.5rem;
-    color: #4a90e2;
-    font-weight: bold;
+    color: var(--dark-text);
 }
 
 /* Text & order inputs */
 input[type="text"], select {
     width: 100%;
     padding: 0.6rem;
-    border: 2px solid #ddd;
+    border: 2px solid #b42121;
     border-radius: 6px;
     font-size: 1rem;
     transition: border-color 0.2s;
@@ -79,7 +137,7 @@ input[type="text"], select {
 /* Using focus for the inputs */
 input[type="text"]:focus, 
 select:focus {
-    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(212,117,15,0.3);
     outline: none;
 }
 
@@ -112,25 +170,22 @@ label {
     border-radius: 8px;
     font-size: 1rem;
     cursor: pointer;
-    color: #fff;
+    color: #301007;
     transition: background-color 0.2s, transform 0.1s;
 }
 
 #smoothieForm button:first-of-type {
-    background: #d46a8a;
-}
-#smoothieForm button:first-of-type:hover{
-    background: #c35476;
+    background: var(--pink);
 }
 
 /* Reset Button */
 #smoothieForm button:last-of-type {
-    background: #4a90e2;  
+    background: var(--pink);  
 }
-#smoothieForm button:last-of-type:hover {
-    background: #3b78c0;
+#smoothieForm button:hover {
+    transform:translateY(-2px) ;
+    box-shadow: 0 4px 12px var(--shadow);
 }
-
 
 /* User friendly on smaller screens */
 @media (max-width: 480px) {
@@ -142,21 +197,23 @@ label {
 
 /* Order output box */
 #orderOutput {
-    width: 100%;
-    background: #fff2e4;
-    border-radius: 6px;
-    padding: 1rem;
-    font-size: 1.1rem;
-    text-align: center;
-    color: #333;
-    margin-bottom: 1rem;  
+    background: var(--highlight);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px var(--shadow);
+    color: var(--white);
+    margin-bottom: 1.5rem
 }
 
 #imageOutput {
     text-align: center;
 }
 #imageOutput img {
+    display:block;
+    margin: 0 auto;
     width: 200px;
     border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px var(--shadow);
 }
+
+
