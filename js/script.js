@@ -44,7 +44,7 @@ const customerName = nameInfo.value;
 // Inputting Validation with conditionals - customer field not left empty
 if (customerName.length < 2) {
     nameInfo.style.border = "2px solid red";
-    output.textContent = "Please enter your real name";
+    output.textContent = "Please enter your name";
     output.style.color = "red";
     return;
 }

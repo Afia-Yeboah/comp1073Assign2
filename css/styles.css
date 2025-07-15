@@ -1,42 +1,138 @@
 /* Global page styling */
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
 body {
     font-family: Georgia, serif;
-    background-color: #fdf6e3;
+    background: #ffeff7;
     color: #333;
     padding: 2rem;
-    margin: 0;
 }
 
-/* Using a card-style form */
+/* Page Styling */
+h1 {
+    text-align: center;
+    color: #da6a8a ; 
+    margin-bottom: 0.5rem;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #555;
+}
+
+/* Making the form into a container */
 #smoothieForm {
     max-width: 600px;
     margin: 0 auto 2rem;
-    padding: 1.5rem;
-    background: #fff;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0, 0.4);
+}
+
+/* Styling the field-group */
+.form-group, fieldset {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: 2px solid #c3e9f4;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: #f7fbff;
 }
 
-/* Spacing for each group */
-.form-group,
-fieldset {
-    margin-bottom: 1rem;
+/* Styling all legends */
+fieldset legend {
+    padding: 0 0.5rem;
+    color: #4a90e2;
+    font-weight: bold;
 }
 
-/* Fruits section */
-#fruitsBox {
-    background-color: #d4ffbb;
-    padding: 0.75rem;
-    border-radius: 6px;
- }
-
- /* Text inputs & Dropdowns */
- input[type="text"],
- select {
+/* Text & order inputs */
+input[type="text"], select {
     width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 6px;
     font-size: 1rem;
-    box-sizing: border-box;
- }
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus, select:focus {
+    border-color: #4a90e2;
+    outline: none;
+}
+
+/* Checkboxes and Radios */
+input[type="radio"], input[type="checkbox"] {
+    margin-right: 0.4rem;
+    transform: scale(1.1);
+}
+
+label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+}
+
+/* fruits layout */
+#fruitsBox {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.5rem;
+    /* background: #e4ffea; */
+}
+
+/* Styling buttons */
+#smoothieForm button {
+    width: 49.6%;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#smoothieForm button:first-of-type {
+    background: #d46a8a;
+}
+#smoothieForm button:last-of-type {
+    background: #4a90e2;
+    margin-left:0;
+    
+}
+#smoothieForm button:active {
+    transform: translateY(0);
+}
+#smoothieForm button:first-of-type:hover{
+    background: #c35476;
+}
+#smoothieForm button:last-of-type:hover {
+    background: #3b78c0;
+}
+
+/* User friendly on smaller screens */
+@media (max-width: 480px) {
+    #smoothieForm button {
+        width: 100%;
+        margin: 0 0 0.75rem;
+    }
+}
+
+/* Order output box */
+#orderOutput {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem;
+    background: #fff2e4;
+    /* border-left: 4px solid #d46a8a; */
+    border-radius: 6px;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #333;
+}
