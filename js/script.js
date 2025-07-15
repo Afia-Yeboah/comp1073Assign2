@@ -2,6 +2,7 @@
     const form = document.getElementById("smoothieForm");
     const output = document.getElementById("orderOutput");
     const resetBtn = document.getElementById("resetBtn");
+    const imageBox = document.getElementById ("imageOutput");
 
 
 const sizePrices = {
@@ -60,6 +61,7 @@ class Smoothie {
 function reset() {
     output.textContent = "";
     output.style.color = "";
+    imageBox.innerHTML = "";
     document.getElementById("customerName").style.border = "";
     document.getElementById("base").style.border = "";
     document.getElementById("fruitsBox").style.border = "";
@@ -80,7 +82,7 @@ if (customerName.length < 2) {
     output.textContent = "Please enter your name";
     output.style.color = "red";
     return;
-}
+};
 
 // reading the smoothie base choice selected
 const baseSelected = document.getElementById("base");
@@ -145,26 +147,22 @@ for (let i = 0; i < extras.length; i++) {
 
 // Instantiate the order
 const smoothieOrder = new Smoothie({customerName, size, base, fruits, extras});
-//render unto page
+
+//render unto page text + price
 output.textContent = smoothieOrder.describe();
 const priceTag = document.createElement("div");
 priceTag.textContent = `Total price: $${total.toFixed(2)}`;
 output.appendChild(priceTag);
-const imageDiv = document.getElementById("imageOutput");
-imageDiv.innerHTML ="";
-output.style.color = "";
-});
 
 // Displaying images according to order made
-const chosenSize = size || "default";
-const smoothieImg = "smoothie-" + chosenSize();
-const imageContainer = document.getElementById("imageOutput");
-imageContainer.innerHTML = "";
-const previewImg = document.createElement("img");
-previewImg.src = `images/${ smoothieImg }`;
-previewImg.alt = `${ chosenSize } smoothie preview`;
-imageContainer.appendChild(previewImg);
+const imageName = `smoothie-${size.toLowerCase()}.jpg`; // switching between sizes of the smoothie order
 
+// building and append the images
+const img = document.createElement("img");
+img.src = `images/${imageName}`;
+img.alt = `${size} smoothie preview`;
+imageBox.appendChild(img);
+});
 // function to handle the reset button
 resetBtn.addEventListener("click", function() {
     reset(); 
