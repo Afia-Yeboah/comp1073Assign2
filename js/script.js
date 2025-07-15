@@ -3,6 +3,32 @@
     const output = document.getElementById("orderOutput");
     const resetBtn = document.getElementById("resetBtn");
 
+// Adding prices and smoothie costs
+const basePrice = {
+    "Almond Milk": 0.50,
+    "Rice Milk": 0.50,
+    "Yoghurt": 0.75,
+    "Orange Juice": 0.25,
+};
+
+const fruitPrices = {
+    Banana: 0.30,
+    Strawberry: 0.40,
+    Mango: 0.50,
+    Blueberry: 0.45,
+    Peach: 0.35,
+    Raspberry: 0.40,
+};
+
+const extraPrices = {
+    "Protein Powder": 1.00,
+    "Honey": 0.25,
+    "Chia Seeds": 0.30,
+    "Avocado": 0.75,
+    "Peanut Butter": 0.50,
+};
+
+
 /* Defining the Smoothie class for the order and creating the following
 constructor that takes the details of the customer Order */
 class Smoothie {
