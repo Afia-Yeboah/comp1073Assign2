@@ -122,6 +122,18 @@ for (let i = 0; i < extraInfo.length; i++) {
     };
 };
 
+// initialize the total
+let total = 0;
+total+= basePrices["base"] || 0;
+for (let i = 0; i < fruits.length; i++) {
+    total += fruitsPrices[fruits[i]] || 0;
+};
+
+// add extra cost
+for (let i = 0; i < extras.length; i++) {
+    total += extraPrices[extras[i]] || 0;
+};
+
 // Instantiate the order
 const smoothieOrder = new Smoothie({customerName, size, base, fruits, extras});
 //render unto page
