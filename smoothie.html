@@ -11,60 +11,67 @@
  <body>
     <h1>Build Your Most Delicious Smoothie</h1>
     <p>Choose your ingredients and see your order appear below</p>
-    <!-- Main form to create the smoothie orders -->
-     <form id="smoothieForm">
-         <!-- Customer name using input -->
-        <div class="form-group">
-            <label for="customerName">Customer Name:</label>
-            <input type="text" id="customerName" name="customerName" placeholder="e.g. Afia">
-        </div>
-        <!-- Creating different size selection for clients to select to choose from small, medium, large -->
-         <fieldset class="form-group">
-            <legend>Size</legend>
-            <label><input type="radio" name= "size" value="Small" checked>Small</label>
-            <label><input type="radio" name= "size" value="Medium">Medium</label>
-            <label><input type="radio" name= "size" value="Large">Large</label>
-         </fieldset>
-         <!-- Creating Base options for order: Almond milk, Orange juice, Rice milk, Youghurt -->
-          <div class="form-group">
-            <label for="base">Smoothie Base</label>
-            <select id="base" name="base">
-                <option value="">Choose a base...</option>
-                <option value="Almond Milk">Almond Milk</option>
-                <option value="Rice Milk">Rice Milk</option>
-                <option value="Yoghurt">Yoghurt</option>
-                <option value="Orange Juice">Orange Juice</option>
-            </select>
-        </div>
+    <div class="layout">
+        <!-- Main form to create the smoothie orders -->
+         <form id="smoothieForm">
+            <!-- Customer name using input -->
+            <div class="form-group">
+                <label for="customerName">Customer Name:</label>
+                <input type="text" id="customerName" name="customerName" placeholder="e.g. Afia">
+            </div>
+            
+            <!-- Creating different size selection for clients to select to choose from small, medium, large --> 
+             <fieldset class="form-group">
+                <legend>Size</legend>
+                <label><input type="radio" name= "size" value="Small" checked>Small</label>
+                <label><input type="radio" name= "size" value="Medium">Medium</label>
+                <label><input type="radio" name= "size" value="Large">Large</label>
+            </fieldset>
 
-        <!-- Creating the Fruit toppings Checkboxes: Clients can select as many as they like 
+            <!-- Creating Base options for order: Almond milk, Orange juice, Rice milk, Youghurt -->
+            <div class="form-group">
+                <label for="base">Smoothie Base</label>
+                <select id="base" name="base">
+                    <option value="">Choose a base...</option>
+                    <option value="Almond Milk">Almond Milk</option>
+                    <option value="Rice Milk">Rice Milk</option>
+                    <option value="Yoghurt">Yoghurt</option>
+                    <option value="Orange Juice">Orange Juice</option>
+                </select>
+            </div>
+
+            <!-- Creating the Fruit toppings Checkboxes: Clients can select as many as they like 
             Adding class id for easier styling-->
-         <fieldset id="fruitsBox" class="form-group">
-            <legend>Select up to three Fruits</legend>
-            <label><input type="checkbox" name="fruit" value="Banana"> Banana</label>
-            <label><input type="checkbox" name="fruit" value="Strawberry"> Strawberry</label>
-            <label><input type="checkbox" name="fruit" value="Mango"> Mango</label>
-            <label><input type="checkbox" name="fruit" value="Blueberry"> Blueberry</label>
-            <label><input type="checkbox" name="fruit" value="Peach"> Peach</label>
-            <label><input type="checkbox" name="fruit" value="Rasberry"> Raspberry</label>
-        </fieldset>
+            <fieldset id="fruitsBox" class="form-group">
+                <legend>Select up to three Fruits</legend>
+                <label><input type="checkbox" name="fruit" value="Banana"> Banana</label>
+                <label><input type="checkbox" name="fruit" value="Strawberry"> Strawberry</label>
+                <label><input type="checkbox" name="fruit" value="Mango"> Mango</label>
+                <label><input type="checkbox" name="fruit" value="Blueberry"> Blueberry</label>
+                <label><input type="checkbox" name="fruit" value="Peach"> Peach</label>
+                <label><input type="checkbox" name="fruit" value="Rasberry"> Raspberry</label>
+            </fieldset>
 
-        <!-- Extra options for the healthy ones -->
-        <fieldset class="form-group">
-            <legend>Extras (Optional)</legend>
-            <label><input type="checkbox" name="extras" value="Protein Powder">Protein Powder</label>
-            <label><input type="checkbox" name="extras" value="Honey">Honey</label>
-            <label><input type="checkbox" name="extras" value="Chia Seeds">Chia Seeds</label>
-            <label><input type="checkbox" name="extras" value="Avocado">Avocado</label>
-            <label><input type="checkbox" name="extras" value="Peanut Butter">Peanut Butter</label>
-        </fieldset>
+            <!-- Extra options for the healthy ones -->
+            <fieldset class="form-group">
+                <legend>Extras (Optional)</legend>
+                <label><input type="checkbox" name="extras" value="Protein Powder">Protein Powder</label>
+                <label><input type="checkbox" name="extras" value="Honey">Honey</label>
+                <label><input type="checkbox" name="extras" value="Chia Seeds">Chia Seeds</label>
+                <label><input type="checkbox" name="extras" value="Avocado">Avocado</label>
+                <label><input type="checkbox" name="extras" value="Peanut Butter">Peanut Butter</label>
+            </fieldset>
         
-        <!-- Press Button to place order and Reset-->
-         <button type="submit">Order Smoothie</button>
-         <button type="button" id="resetBtn">Reset</button>
-     </form>
-     <!-- Output the final smoothie order inside a paragraph -->
-      <p id="orderOutput"></p>
-      <div id="imageOutput"></div>
+            <!-- Press Button to place order and Reset-->
+            <button type="submit">Order Smoothie</button>
+            <button type="button" id="resetBtn">Reset</button>
+        </form>
+     
+        <!-- Output the final smoothie order inside a paragraph -->
+        <div class="sidebar">
+            <p id="orderOutput"></p>
+            <div id="imageOutput"></div>
+        </div>
+    </div>
  </body>
  </html>
