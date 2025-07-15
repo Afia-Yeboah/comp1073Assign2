@@ -3,8 +3,15 @@
     const output = document.getElementById("orderOutput");
     const resetBtn = document.getElementById("resetBtn");
 
+
+const sizePrices = {
+    Small: 3.00,
+    Medium: 4.50,
+    Large: 6.00
+};
+
 // Adding prices and smoothie costs
-const basePrice = {
+const basePrices = {
     "Almond Milk": 0.50,
     "Rice Milk": 0.50,
     "Yoghurt": 0.75,
@@ -124,22 +131,39 @@ for (let i = 0; i < extraInfo.length; i++) {
 
 // initialize the total
 let total = 0;
-total+= basePrices["base"] || 0;
+// size cost
+total += sizePrices[ size ] || 0;
+total+= basePrices[ base ] || 0;
 for (let i = 0; i < fruits.length; i++) {
-    total += fruitsPrices[fruits[i]] || 0;
+    total += fruitPrices[ fruits[i] ] || 0;
 };
 
 // add extra cost
 for (let i = 0; i < extras.length; i++) {
-    total += extraPrices[extras[i]] || 0;
+    total += extraPrices[ extras[i] ] || 0;
 };
 
 // Instantiate the order
 const smoothieOrder = new Smoothie({customerName, size, base, fruits, extras});
 //render unto page
 output.textContent = smoothieOrder.describe();
+const priceTag = document.createElement("div");
+priceTag.textContent = `Total price: $${total.toFixed(2)}`;
+output.appendChild(priceTag);
+const imageDiv = document.getElementById("imageOutput");
+imageDiv.innerHTML ="";
 output.style.color = "";
 });
+
+// Displaying images according to order made
+const chosenSize = size || "default";
+const smoothieImg = "smoothie-" + chosenSize();
+const imageContainer = document.getElementById("imageOutput");
+imageContainer.innerHTML = "";
+const previewImg = document.createElement("img");
+previewImg.src = `images/${ smoothieImg }`;
+previewImg.alt = `${ chosenSize } smoothie preview`;
+imageContainer.appendChild(previewImg);
 
 // function to handle the reset button
 resetBtn.addEventListener("click", function() {
