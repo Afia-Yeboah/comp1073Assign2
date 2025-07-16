@@ -162,6 +162,11 @@ label {
     gap: 0.5rem;
 }
 
+.live-total {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--highlight);
+}
 /* Styling buttons */
 #smoothieForm button {
     width: 49.6%;

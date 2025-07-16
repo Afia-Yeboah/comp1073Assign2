@@ -22,12 +22,12 @@
                 <input type="text" id="customerName" name="customerName" placeholder="e.g. Afia">
             </div>
             
-            <!-- Creating different size selection for clients to select to choose from small, medium, large --> 
+            <!-- Creating different size selection for clients to select to choose from small, medium, large + prices attached --> 
              <fieldset class="form-group">
                 <legend>Size</legend>
-                <label><input type="radio" name= "size" value="Small" checked>Small</label>
-                <label><input type="radio" name= "size" value="Medium">Medium</label>
-                <label><input type="radio" name= "size" value="Large">Large</label>
+                <label><input type="radio" name= "size" value="Small" checked>Small<span class="price">($3.00)</span></label>
+                <label><input type="radio" name= "size" value="Medium">Medium<span class="price">($4.50)</span></label>
+                <label><input type="radio" name= "size" value="Large">Large<span class="price">($6.00)</span></label>
             </fieldset>
 
             <!-- Creating Base options for order: Almond milk, Orange juice, Rice milk, Youghurt -->
@@ -35,34 +35,37 @@
                 <label for="base">Smoothie Base</label>
                 <select id="base" name="base">
                     <option value="">Choose a base...</option>
-                    <option value="Almond Milk">Almond Milk</option>
-                    <option value="Rice Milk">Rice Milk</option>
-                    <option value="Yoghurt">Yoghurt</option>
-                    <option value="Orange Juice">Orange Juice</option>
+                    <option value="Almond Milk">Almond Milk<span class="price">($0.50)</span></option>
+                    <option value="Rice Milk">Rice Milk<span class="price">($0.50)</span></option>
+                    <option value="Yoghurt">Yoghurt<span class="price">($0.75)</span></option>
+                    <option value="Orange Juice">Orange Juice<span class="price">($0.25)</span></option>
                 </select>
             </div>
 
-            <!-- Creating the Fruit toppings Checkboxes: Clients can select as many as they like 
+            <!-- Creating the Fruit toppings Checkboxes: Clients can select up to 3
             Adding class id for easier styling-->
             <fieldset id="fruitsBox" class="form-group">
                 <legend>Select up to three Fruits</legend>
-                <label><input type="checkbox" name="fruit" value="Banana"> Banana</label>
-                <label><input type="checkbox" name="fruit" value="Strawberry"> Strawberry</label>
-                <label><input type="checkbox" name="fruit" value="Mango"> Mango</label>
-                <label><input type="checkbox" name="fruit" value="Blueberry"> Blueberry</label>
-                <label><input type="checkbox" name="fruit" value="Peach"> Peach</label>
-                <label><input type="checkbox" name="fruit" value="Rasberry"> Raspberry</label>
+                <label><input type="checkbox" name="fruit" value="Banana"> Banana<span class="price">($0.30)</span></label>
+                <label><input type="checkbox" name="fruit" value="Strawberry"> Strawberry<span class="price">($0.40)</span></label>
+                <label><input type="checkbox" name="fruit" value="Mango"> Mango<span class="price">($0.50)</span></label>
+                <label><input type="checkbox" name="fruit" value="Blueberry"> Blueberry<span class="price">($0.45)</span></label>
+                <label><input type="checkbox" name="fruit" value="Peach"> Peach<span class="price">($0.35)</span></label>
+                <label><input type="checkbox" name="fruit" value="Rasberry"> Raspberry<span class="price">($0.40)</span></label>
             </fieldset>
 
             <!-- Extra options for the healthy ones -->
             <fieldset class="form-group">
                 <legend>Extras (Optional)</legend>
-                <label><input type="checkbox" name="extras" value="Protein Powder">Protein Powder</label>
-                <label><input type="checkbox" name="extras" value="Honey">Honey</label>
-                <label><input type="checkbox" name="extras" value="Chia Seeds">Chia Seeds</label>
-                <label><input type="checkbox" name="extras" value="Avocado">Avocado</label>
-                <label><input type="checkbox" name="extras" value="Peanut Butter">Peanut Butter</label>
+                <label><input type="checkbox" name="extras" value="Protein Powder">Protein Powder<span class="price">($1.00)</span></label>
+                <label><input type="checkbox" name="extras" value="Honey">Honey<span class="price">($0.25)</span></label>
+                <label><input type="checkbox" name="extras" value="Chia Seeds">Chia Seeds<span class="price">($0.30)</span></label>
+                <label><input type="checkbox" name="extras" value="Avocado">Avocado<span class="price">($0.75)</span></label>
+                <label><input type="checkbox" name="extras" value="Peanut Butter">Peanut Butter<span class="price">($0.50)</span></label>
             </fieldset>
+
+            <!-- Display the total pricing -->
+             <div id="liveTotal" class="live-total">Current total: $0.00</div>
         
             <!-- Press Button to place order and Reset-->
             <button type="submit">Order Smoothie</button>

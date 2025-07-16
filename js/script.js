@@ -36,6 +36,69 @@ const extraPrices = {
     "Peanut Butter": 0.50,
 };
 
+// calculating and render live total
+function calculateTotal() {
+  let total = 0;
+
+  // for size
+  const sizeInputs = document.getElementsByName('size');
+  for (let i = 0; i < sizeInputs.length; i++) {
+    if (sizeInputs[i].checked) {
+      total += sizePrices[sizeInputs[i].value] || 0;
+      break;
+    }
+  }
+
+  // for base
+  const baseValue = document.getElementById('base').value;
+  if (baseValue) {
+    total += basePrices[baseValue] || 0;
+  }
+
+  // for fruits
+  const fruitInputs = document.getElementsByName('fruit');
+  for (let i = 0; i < fruitInputs.length; i++) {
+    if (fruitInputs[i].checked) {
+      total += fruitPrices[fruitInputs[i].value] || 0;
+    }
+  }
+
+  // for extras
+  const extraInputs = document.getElementsByName('extras');
+  for (let i = 0; i < extraInputs.length; i++) {
+    if (extraInputs[i].checked) {
+      total += extraPrices[extraInputs[i].value] || 0;
+    }
+  }
+
+  // Update according to customer order
+  const liveTotalDiv = document.getElementById('liveTotal');
+  liveTotalDiv.textContent = 'Current total: $' + total.toFixed(2);
+}
+
+// for the size options
+const sizeElement = document.getElementsByName('size');
+for (let i = 0; i < sizeElement.length; i++) {
+  sizeElement[i].addEventListener('change', calculateTotal);
+}
+
+// for the base dropdown
+document.getElementById('base').addEventListener('change', calculateTotal);
+
+// fruit checkboxes
+const fruitElement = document.getElementsByName('fruit');
+for (let i = 0; i < fruitEls.length; i++) {
+  fruitElement[i].addEventListener('change', calculateTotal);
+}
+
+// check for extras
+const extraElement = document.getElementsByName('extras');
+for (let i = 0; i < extraElement.length; i++) {
+  extraElement[i].addEventListener('change', calculateTotal);
+}
+
+//Calculate the total rate of customer order
+calculateTotal();
 
 /* Defining the Smoothie class for the order and creating the following
 constructor that takes the details of the customer Order */
