@@ -162,14 +162,23 @@ label {
     gap: 0.5rem;
 }
 
+/* styling prices and live total */
 .live-total {
-    font-weight: bold;
-    margin-bottom: 1rem;
-    color: var(--highlight);
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--dark-text);
 }
+
+.price {
+    font-size: 0.8rem;
+    color: rgba(186, 157, 157, 0.8);
+    margin-left: 0.25rem;
+}
+
 /* Styling buttons */
 #smoothieForm button {
-    width: 49.6%;
+    width: 100%;
     padding: 0.75rem;
     border: none;
     border-radius: 8px;

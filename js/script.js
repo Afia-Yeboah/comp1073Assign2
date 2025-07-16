@@ -87,7 +87,7 @@ document.getElementById('base').addEventListener('change', calculateTotal);
 
 // fruit checkboxes
 const fruitElement = document.getElementsByName('fruit');
-for (let i = 0; i < fruitEls.length; i++) {
+for (let i = 0; i < fruitElement.length; i++) {
   fruitElement[i].addEventListener('change', calculateTotal);
 }
 
@@ -128,6 +128,7 @@ function reset() {
     document.getElementById("customerName").style.border = "";
     document.getElementById("base").style.border = "";
     document.getElementById("fruitsBox").style.border = "";
+    document.getElementById("liveTotal").textContent = "Current total: $0.00";
 };
 
 // Using an event listener to listen for form submission
